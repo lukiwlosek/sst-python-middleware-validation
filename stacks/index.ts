@@ -3,7 +3,7 @@ import { Api } from "./Api";
 
 export default function main(app: App) {
   app.setDefaultFunctionProps({
-    runtime: "python3.9",
+    runtime: "python3.8",
     srcPath: "services",
   });
   app.stack(Api)
