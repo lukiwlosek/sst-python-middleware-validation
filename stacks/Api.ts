@@ -8,7 +8,8 @@ export function Api({ stack }: StackContext) {
 
   const api = new ApiGateway(stack, "api", {
     routes: {
-      "GET /test": 'functions/handler.handler'
+      "GET /test": 'functions/handler.handler',
+      "POST /test": "functions/handler.handler"
     },
   });
 

@@ -19,7 +19,30 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: pong 
+                example: pong
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user: 
+                  type: string
+                  example: lukasz
+              required:
+                - user
+      responses:
+        '200':  
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: success
 components:
   parameters:
     x-nd-meta-data:

@@ -2,14 +2,21 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
       "name": "Debug SST Start",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/sst",
       "runtimeArgs": ["start", "--increase-timeout"],
       "console": "integratedTerminal",
-      "skipFiles": ["<node_internals>/**"],
-      "env": {"PYTEST_ADDOPTS": "--no-cov"},
+      "skipFiles": ["<node_internals>/**"]
     }
   ]
 }
