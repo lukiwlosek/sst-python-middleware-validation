@@ -56,7 +56,13 @@ let input = {
   },
 };
 
+<<<<<<< HEAD
+import { buildSchemaSync } from "api-schema-builder";
+
+let postInput = buildSchemaSync(input);
+=======
 import * as toJsonSchema from "@openapi-contrib/openapi-schema-to-json-schema";
 
 let postInput = toJsonSchema(input);
 console.log(JSON.stringify(postInput, undefined, 2))
+>>>>>>> 9d2a85c448bd319646ecbc255f4ec6aa531b3da6

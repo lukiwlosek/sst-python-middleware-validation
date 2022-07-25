@@ -7,4 +7,4 @@ export default function main(app: App) {
     srcPath: "services",
   });
   app.stack(Api)
-}
+} 
