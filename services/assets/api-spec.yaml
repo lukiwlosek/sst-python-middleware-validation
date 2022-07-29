@@ -1,17 +1,24 @@
 openapi: 3.0.1
+tags:
+  - name: test
 info:
-  title: GForces test validation middleware
+  title: Test validation middleware
   version: 1.0.0
   contact:
-    name: Shared Services
-    email: shared-services@gforces.auto
-    url: 'https://www.gforces.co.uk'
-  description: 'This API gives the ability to save, retrieve and delete vehicles against a users account.'
+    name: Lukasz
+    email: pan.lukasz.wlosek@gmail.com
+  description: 'This api doc is an example'
+servers:
+  - url: 'localhost:800'
 paths:
   /test:
     parameters: 
       - $ref: '#/components/parameters/x-nd-meta-data'
     get: 
+      description: 'OK' 
+      operationId: get-test
+      tags:
+        - test
       responses:
         '200':
           description: OK
@@ -21,6 +28,10 @@ paths:
                 type: string
                 example: pong
     post:
+      description: 'OK' 
+      operationId: post-test
+      tags:
+        - test
       requestBody:
         content:
           application/json:
