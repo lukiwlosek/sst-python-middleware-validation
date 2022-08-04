@@ -2,12 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python: Current File",
+      "name": "Debug test",
       "type": "python",
-      "request": "launch",
-      "program": "${file}",
+      "request": "attach",
       "console": "integratedTerminal",
-      "justMyCode": false
+      "justMyCode": false,
+      "stopOnEntry": true,
+      "envFile": "${workspaceFolder}/.env.test",
+      "purpose": ["debug-test"]
     },
     {
       "name": "Debug SST Start",
@@ -16,7 +18,10 @@
       "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/sst",
       "runtimeArgs": ["start", "--increase-timeout"],
       "console": "integratedTerminal",
-      "skipFiles": ["<node_internals>/**"]
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "AWS_PROFILE": "learning"
+      }
     }
   ]
 }

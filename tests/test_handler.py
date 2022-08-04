@@ -48,8 +48,8 @@ class TestSum(unittest.TestCase):
             "memory_limit_in_mb": "1024",
             "deadline_ms": "1659088677382",
         }
-        print(json.dumps(handler(event, {})))
         self.assertEqual(handler(event, context)["statusCode"], 200)
+        self.assertEqual(True, True)
 
     def test_handler_post(self):
         event = {

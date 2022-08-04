@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.0
 tags:
   - name: test
 info:
@@ -9,7 +9,7 @@ info:
     email: pan.lukasz.wlosek@gmail.com
   description: 'This api doc is an example'
 servers:
-  - url: 'localhost:800'
+  - url: 'https://1gksbcp2qc.execute-api.eu-west-1.amazonaws.com'
 paths:
   /test:
     parameters: 

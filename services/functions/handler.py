@@ -12,15 +12,20 @@ from openapi_core.validation.request.validators import RequestValidator
 
 import services.functions.schemas as schemas
 
+from openapi_spec_validator.readers import read_from_filename
+from openapi_schema_validator import validate
+from openapi_core import create_spec
+from json import load
+
+
+with open("./services/assets/schema.json", "r") as spec_file:
+    spec_dict = load(spec_file)
+spec = create_spec(spec_dict)
+
 logger = Logger(service="APP")
 
 app = APIGatewayRestResolver()
 
-
-from openapi_spec_validator.readers import read_from_filename
-from openapi_schema_validator import validate
-
-spec_dict = read_from_filename("./services/assets/api-spec.yaml")
 
 # If no exception is raised by validate_spec(), the spec is valid.
 # validate_spec(spec_dict)
@@ -42,11 +47,12 @@ def hello_name():
 
 @app.get("/test")
 def hello():
-    print(spec_dict)
-    validator = RequestValidator(spec_dict)
+    validator = RequestValidator(spec)
     # change the event into a express request?
-    result = validator.validate(app.current_event)
-    print(result)
+    print(app.current_event.__dict__["_data"])
+    request = {"full_url_pattern": "here"}
+    express = ExpressObj(app.current_event.__dict__["_data"]["headers"])
+    result = validator.validate(express)
 
     logger.info(f"Request from GET received")
     return {"message": "hello unknown!"}
@@ -73,3 +79,10 @@ def handler(event: dict, context):
     # )
 
     return app.resolve(event, context)
+
+
+class ExpressObj:
+    def __init__(self, headers):
+        self.full_url_pattern = ""
+        self.paths = "/test"
+        self.headers = headers
